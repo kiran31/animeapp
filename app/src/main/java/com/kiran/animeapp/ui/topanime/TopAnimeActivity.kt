@@ -21,6 +21,7 @@ import com.kiran.animeapp.databinding.ActivityTopAnimeBinding
 import com.kiran.animeapp.di.component.DaggerActivityComponent
 import com.kiran.animeapp.di.module.ActivityModule
 import com.kiran.animeapp.ui.base.UiState
+import com.kiran.animeapp.utils.NetworkHelper
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,6 +31,9 @@ class TopAnimeActivity : AppCompatActivity() {
 
     @Inject
     lateinit var adapter: TopAnimeAdapter
+    @Inject
+    lateinit var networkHelper: NetworkHelper
+
     private lateinit var binding: ActivityTopAnimeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         injectDependencies()

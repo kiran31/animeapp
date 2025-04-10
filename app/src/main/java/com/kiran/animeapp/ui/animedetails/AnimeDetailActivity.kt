@@ -13,6 +13,7 @@ import com.kiran.animeapp.databinding.ActivityAnimeDetailBinding
 import com.kiran.animeapp.di.component.DaggerActivityComponent
 import com.kiran.animeapp.di.module.ActivityModule
 import com.kiran.animeapp.ui.base.UiState
+import com.kiran.animeapp.utils.NetworkHelper
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import kotlinx.coroutines.launch
@@ -21,6 +22,8 @@ import javax.inject.Inject
 class AnimeDetailActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModel: AnimeDetailViewModel
+    @Inject
+    lateinit var networkHelper: NetworkHelper
     private lateinit var binding: ActivityAnimeDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         injectDependencies()

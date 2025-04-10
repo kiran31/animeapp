@@ -9,6 +9,7 @@ import com.kiran.animeapp.ui.animedetails.AnimeDetailViewModel
 import com.kiran.animeapp.ui.base.ViewModelProviderFactory
 import com.kiran.animeapp.ui.topanime.AnimeListViewModel
 import com.kiran.animeapp.ui.topanime.TopAnimeAdapter
+import com.kiran.animeapp.utils.NetworkHelper
 import dagger.Module
 import dagger.Provides
 
@@ -22,16 +23,21 @@ class ActivityModule(private val activity : AppCompatActivity) {
     }
 
     @Provides
-    fun provideAnimeListViewModule(mainRepository : MainRepository) : AnimeListViewModel {
+    fun provideNetworkHelper(): NetworkHelper {
+        return NetworkHelper(activity)
+    }
+
+    @Provides
+    fun provideAnimeListViewModule(mainRepository : MainRepository,networkHelper: NetworkHelper) : AnimeListViewModel {
         return ViewModelProvider(activity , ViewModelProviderFactory(AnimeListViewModel::class){
-            AnimeListViewModel(mainRepository)
+            AnimeListViewModel(mainRepository,networkHelper)
         })[AnimeListViewModel::class.java]
     }
 
     @Provides
-    fun provideAnimeDetailViewModel(mainRepository : MainRepository) : AnimeDetailViewModel {
+    fun provideAnimeDetailViewModel(mainRepository : MainRepository,networkHelper : NetworkHelper) : AnimeDetailViewModel {
         return ViewModelProvider(activity , ViewModelProviderFactory(AnimeDetailViewModel::class){
-            AnimeDetailViewModel(mainRepository)
+            AnimeDetailViewModel(mainRepository, networkHelper)
         })[AnimeDetailViewModel::class.java]
     }
 
