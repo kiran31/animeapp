@@ -1,6 +1,7 @@
 package com.kiran.animeapp.ui.animedetails
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -30,7 +31,7 @@ class AnimeDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAnimeDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        Log.d("testr","test")
         val animeId = intent.getIntExtra(ANIME_ID, -1)
         if (animeId != -1) {
             setupObservers()
